@@ -77,12 +77,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    {{ config('app.name') }}
+                    Política de Privacidad
                 </div>
 
                 <div class="links">
                     <a href="#">Preguntas frecuentes</a>
-                    <a href="{{ route('privacy') }}">Política de privacidad</a>
                     <a href="{{ route('tos') }}">Términos y condiciones</a>
                 </div>
             </div>

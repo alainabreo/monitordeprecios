@@ -19,5 +19,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('login/facebook', 'Auth\LoginController@redirectToProvider')->name('login.facebook');
-Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+Route::get('/privacy', 'TermsAndPrivacyController@privacy')->name('privacy');
+Route::get('/tos', 'TermsAndPrivacyController@tos')->name('tos');
+
+Route::get('login/facebook', 'SocialiteController@redirectToProvider')->name('login.facebook');
+Route::get('login/facebook/callback', 'SocialiteController@handleProviderCallback');
+
+Route::get('login/twitter', 'SocialiteController@redirectToTwitterProvider')->name('login.twitter');
+Route::get('login/twitter/callback', 'SocialiteController@handleTwitterProviderCallback');
+
+Route::get('login/google', 'SocialiteController@redirectToGoogleProvider')->name('login.google');
+Route::get('login/google/callback', 'SocialiteController@handleGoogleProviderCallback');

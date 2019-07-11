@@ -70,11 +70,11 @@
                         <i class="fab fa-facebook-f"></i>
                         Ingresar usando Facebook
                     </a>
-                    <a href="#" class="btn btn-info btn-block">
+                    <a href="{{ route('login.twitter') }}" class="btn btn-info btn-block">
                         <i class="fab fa-twitter"></i>
                         Ingresar usando Twitter
                     </a>
-                    <a href="#" class="btn btn-danger btn-block">
+                    <a href="{{ route('login.google') }}" class="btn btn-danger btn-block">
                         <i class="fab fa-google"></i>
                         Ingresar usando Google
                     </a>

@@ -77,13 +77,12 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    {{ config('app.name') }}
+                    Términos de Servicio 
                 </div>
 
                 <div class="links">
                     <a href="#">Preguntas frecuentes</a>
                     <a href="{{ route('privacy') }}">Política de privacidad</a>
-                    <a href="{{ route('tos') }}">Términos y condiciones</a>
                 </div>
             </div>
         </div>
