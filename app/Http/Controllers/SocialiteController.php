@@ -66,7 +66,7 @@ class SocialiteController extends Controller
     public function handleGoogleProviderCallback()
     {
         $userGoogle = Socialite::driver('google')->user();
-        //dd($userGoogle);
+        dd($userGoogle);
         $user = User::where('email', $userGoogle->getEmail())->first();
         if (!$user) {
             $user = User::create([
