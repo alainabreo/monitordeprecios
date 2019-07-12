@@ -24,3 +24,7 @@ Route::get('/tos', 'TermsAndPrivacyController@tos')->name('tos');
 
 Route::get('login/{provider}', 'SocialiteController@redirectToProvider');
 Route::get('login/{provider}/callback', 'SocialiteController@handleProviderCallback');
+
+Route::get('/locations', 'LocationController@index');
+Route::post('/locations', 'LocationController@store');
+Route::delete('/locations/{location}', 'LocationController@destroy');
