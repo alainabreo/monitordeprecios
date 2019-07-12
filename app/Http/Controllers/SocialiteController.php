@@ -9,73 +9,47 @@ use App\User;
 
 class SocialiteController extends Controller
 {
+	private $availableProviders = [
+		'facebook', 'twitter', 'google'
+	];
 
-    public function redirectToProvider()
+    public function redirectToProvider($provider)
     {
-        return Socialite::driver('facebook')->redirect();
+    	if (!in_array($provider, $this->availableProviders)) {
+    		return redirect()->route('login');
+    	}
+
+    	return Socialite::driver($provider)->redirect();
     }
 
-    public function handleProviderCallback()
+    public function handleProviderCallback($provider)
     {
-        $userFacebook = Socialite::driver('facebook')->user();
-        //dd($userFacebook);
-        $user = User::where('email', $userFacebook->getEmail())->first();
-        if (!$user) {
-            $user = User::create([
-                'name' => $userFacebook->getName(),
-                'email' => $userFacebook->getEmail(),
-                'password' => '',
-                'facebook_id' => $userFacebook->getId(),
-                'avatar' => $userFacebook->getAvatar(),
-                'nickname' => $userFacebook->getNickname()
-            ]);            
+    	if (!in_array($provider, $this->availableProviders)) {
+    		return redirect()->route('login');
+    	}
+
+        $userSocialite = Socialite::driver($provider)->user();
+        //dd($userSocialite);
+        if ($userSocialite->getEmail()) {
+	        $user = User::where('email', $userSocialite->getEmail())->first();
+        } else {
+	        $user = User::where($provider . '_id', $userSocialite->getId())->first();
         }
-        auth()->login($user);
-        return redirect()->route('home');
-    }
-
-    public function redirectToTwitterProvider()
-    {
-        return Socialite::driver('twitter')->redirect();
-    }
-
-    public function handleTwitterProviderCallback()
-    {
-        $userTwitter = Socialite::driver('twitter')->user();
-        //dd($userTwitter);
-        $user = User::where('email', $userTwitter->getEmail())->first();
-        if (!$user) {
-            $user = User::create([
-                'name' => $userTwitter->getName(),
-                'email' => $userTwitter->getEmail(),
-                'password' => '',
-                'twitter_id' => $userTwitter->getId(),
-                'avatar' => $userTwitter->getAvatar(),
-                'nickname' => $userTwitter->getNickname()
+        if ($user) {
+            $user->update([
+                'name' => $userSocialite->getName(),
+                $provider . '_id' => $userSocialite->getId(),
+                'avatar' => $userSocialite->getAvatar(),
+                'nickname' => $userSocialite->getNickname()
             ]);            
-        }
-        auth()->login($user);
-        return redirect()->route('home');
-    }
-
-    public function redirectToGoogleProvider()
-    {
-        return Socialite::driver('google')->redirect();
-    }
-
-    public function handleGoogleProviderCallback()
-    {
-        $userGoogle = Socialite::driver('google')->user();
-        dd($userGoogle);
-        $user = User::where('email', $userGoogle->getEmail())->first();
-        if (!$user) {
+        } else {
             $user = User::create([
-                'name' => $userGoogle->getName(),
-                'email' => $userGoogle->getEmail(),
+                'name' => $userSocialite->getName(),
+                'email' => $userSocialite->getEmail(),
                 'password' => '',
-                'google_id' => $userGoogle->getId(),
-                'avatar' => $userGoogle->getAvatar(),
-                'nickname' => $userGoogle->getNickname()
+                $provider . '_id' => $userSocialite->getId(),
+                'avatar' => $userSocialite->getAvatar(),
+                'nickname' => $userSocialite->getNickname()
             ]);            
         }
         auth()->login($user);

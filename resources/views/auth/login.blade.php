@@ -66,19 +66,19 @@
                         </div>
                     </form>
 
-                    <a href="{{ route('login.facebook') }}" class="btn btn-primary btn-block">
+                    <a href="{{ url('login/facebook') }}" class="btn btn-primary btn-block">
                         <i class="fab fa-facebook-f"></i>
                         Ingresar usando Facebook
                     </a>
-                    <a href="{{ route('login.twitter') }}" class="btn btn-info btn-block">
+                    <a href="{{ url('login/twitter') }}" class="btn btn-info btn-block">
                         <i class="fab fa-twitter"></i>
                         Ingresar usando Twitter
                     </a>
-                    <a href="{{ route('login.google') }}" class="btn btn-danger btn-block">
+                    <a href="{{ url('login/google') }}" class="btn btn-danger btn-block">
                         <i class="fab fa-google"></i>
                         Ingresar usando Google
                     </a>
-                    <a href="#" class="btn btn-dark btn-block">
+                    <a href="{{ route('register') }}" class="btn btn-dark btn-block">
                         <i class="fas fa-at"></i>
                         Registro mediante correo
                     </a>
