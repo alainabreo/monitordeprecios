@@ -25,10 +25,12 @@ Route::get('/tos', 'TermsAndPrivacyController@tos')->name('tos');
 Route::get('login/{provider}', 'SocialiteController@redirectToProvider');
 Route::get('login/{provider}/callback', 'SocialiteController@handleProviderCallback');
 
-Route::get('/locations', 'LocationController@index');
-Route::post('/locations', 'LocationController@store');
-Route::delete('/locations/{location}', 'LocationController@destroy');
+Route::group(['middleware' => ['auth', 'admin']], function () {
+	Route::get('/locations', 'LocationController@index');
+	Route::post('/locations', 'LocationController@store');
+	Route::delete('/locations/{location}', 'LocationController@destroy');
 
-Route::get('/items', 'ItemController@index');
-Route::post('/items', 'ItemController@store');
-Route::delete('/items/{item}', 'ItemController@destroy');
+	Route::get('/items', 'ItemController@index');
+	Route::post('/items', 'ItemController@store');
+	Route::delete('/items/{item}', 'ItemController@destroy');
+});

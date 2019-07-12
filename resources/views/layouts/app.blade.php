@@ -56,6 +56,15 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @if (auth()->user()->is_admin)
+                                        <a class="dropdown-item" href="{{ url('/locations') }}">
+                                            Ubicaciones
+                                        </a>
+                                        <a class="dropdown-item" href="{{ url('/items') }}">
+                                            Items
+                                        </a>
+                                    @endif
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
