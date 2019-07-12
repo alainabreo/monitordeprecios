@@ -28,3 +28,7 @@ Route::get('login/{provider}/callback', 'SocialiteController@handleProviderCallb
 Route::get('/locations', 'LocationController@index');
 Route::post('/locations', 'LocationController@store');
 Route::delete('/locations/{location}', 'LocationController@destroy');
+
+Route::get('/items', 'ItemController@index');
+Route::post('/items', 'ItemController@store');
+Route::delete('/items/{item}', 'ItemController@destroy');
