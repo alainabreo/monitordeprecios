@@ -34,3 +34,9 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 	Route::post('/items', 'ItemController@store');
 	Route::delete('/items/{item}', 'ItemController@destroy');
 });
+
+Route::group(['middleware' => ['auth']], function () {
+	Route::get('/prices', 'PriceController@index');
+	Route::post('/prices', 'PriceController@store');
+	Route::delete('/prices/{price}', 'PriceController@destroy');
+});
