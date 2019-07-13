@@ -42,16 +42,19 @@
                         <tbody>
                             @foreach ($items as $item)
                                 <tr>
-                                    <td width="60%">                                        
+                                    <td width="50%">                                        
                                         {{ $item->name }}
                                     </td>
                                     <td width="30%">
                                         {{ $item->created_at }}
                                     </td>
-                                    <td align="right" width="10%">
+                                    <td align="right" width="20%">
                                         <form action="{{ url('/items/'.$item->id) }}" method="post">
                                             {{ csrf_field() }}
                                             {{ method_field('delete') }}
+                                            <a href="{{ url('/items/'.$item->id) }}" class="btn btn-info">
+                                                <i class="fas fa-edit"></i>
+                                            </a>                                            
                                             <button type="submit" href="" class="btn btn-danger">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>

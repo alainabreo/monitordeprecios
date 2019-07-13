@@ -29,10 +29,15 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 	Route::get('/locations', 'LocationController@index');
 	Route::post('/locations', 'LocationController@store');
 	Route::delete('/locations/{location}', 'LocationController@destroy');
+	Route::get('/locations/{location}', 'LocationController@edit');
+	Route::put('/locations/{location}', 'LocationController@update');	
 
 	Route::get('/items', 'ItemController@index');
 	Route::post('/items', 'ItemController@store');
 	Route::delete('/items/{item}', 'ItemController@destroy');
+	Route::get('/items/{item}', 'ItemController@edit');
+	Route::put('/items/{item}', 'ItemController@update');
+		
 	//Route::get('/items/{item}/prices', 'PriceController@export');
 	Route::get('/items/{item}/prices/{startDate}/{endDate}', 'PriceController@export');
 });

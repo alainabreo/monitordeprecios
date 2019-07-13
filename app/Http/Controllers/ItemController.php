@@ -32,4 +32,15 @@ class ItemController extends Controller
     	$item->delete();
     	return back();
     }
+
+    public function edit(Item $item)
+    {        
+        return view('items.edit', compact('item'));
+    }
+    
+    public function update(Request $request, Item $item)
+    {
+        $item->update($request->only('name'));
+        return redirect('/items');
+    }    
 }

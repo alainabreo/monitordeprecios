@@ -33,6 +33,9 @@
                                         <form action="{{ url('/locations/'.$location->id) }}" method="post">
                                             {{ csrf_field() }}
                                             {{ method_field('delete') }}
+                                            <a href="{{ url('/locations/'.$location->id) }}" class="btn btn-info">
+                                                <i class="fas fa-edit"></i>
+                                            </a>                                            
                                             <button type="submit" href="" class="btn btn-danger">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
