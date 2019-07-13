@@ -20,6 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Kit Font Awesome para manejo de Iconos -->
     <script src="https://kit.fontawesome.com/8995ec6ee3.js"></script>
+    @yield('styles')
 </head>
 <body>
     <div id="app">
@@ -89,5 +90,6 @@
             @yield('content')
         </main>
     </div>
+    @yield('scripts')
 </body>
 </html>

@@ -14,6 +14,16 @@ class PriceController extends Controller
 {
 	public function store(Request $request)
 	{
+        $rules = [
+            'location_id' => 'required',
+            'item_id' => 'required'
+        ];
+        $messages = [
+            'location_id.required' => 'Es obligatorio seleccionar una ubicación.',
+            'item_id.required' => 'Es obligatorio seleccionar un ítem.'
+        ];
+        $this->validate($request, $rules, $messages);
+        		
 		//$data = $request->all();
 		$data['location_id'] = $request->input('location_id');
 		$data['item_id'] = $request->input('item_id');
