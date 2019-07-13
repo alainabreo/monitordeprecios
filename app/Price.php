@@ -23,14 +23,15 @@ class Price extends Model
     // N - 1
     public function location()
     {
-    	return $this->belongsTo(Location::class);
+    	return $this->belongsTo(Location::class)->withTrashed();
     }
 
     // $price->item->name
     // N - 1
     public function item()
     {
-    	return $this->belongsTo(Item::class);
+        //->withTrashed() Tiene en cuenta relaciones que tengan SoftDeleted
+    	return $this->belongsTo(Item::class)->withTrashed();
     }
 
 }
