@@ -33,6 +33,8 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 	Route::get('/items', 'ItemController@index');
 	Route::post('/items', 'ItemController@store');
 	Route::delete('/items/{item}', 'ItemController@destroy');
+	//Route::get('/items/{item}/prices', 'PriceController@export');
+	Route::get('/items/{item}/prices/{startDate}/{endDate}', 'PriceController@export');
 });
 
 Route::group(['middleware' => ['auth']], function () {

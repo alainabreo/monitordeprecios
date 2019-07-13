@@ -58,7 +58,10 @@
                     Detalles del item seleccionado
                 </div>
                 <div class="card-body">
-                    <table class="table table-hover">
+                    <a href="{{ url('/items/'.$itemId.'/prices/'.$startDate.'/'.$endDate) }}" class="btn btn-success">
+                        Descargar como excel
+                    </a>
+                    <table class="table table-hover mt-2">
                         <thead>
                             <tr>
                                 <th>Usuario</th>

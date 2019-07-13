@@ -24,15 +24,15 @@ class MonitorController extends Controller
     	$endDate = Carbon::now();
     	$startDate = Carbon::now()->subDays(7);
 
-    	$item_id = $request->input('item_id');
-    	if ($item_id) {
-			$prices = Price::where('item_id', $item_id)
+    	$itemId = $request->input('item_id');
+    	if ($itemId) {
+			$prices = Price::where('item_id', $itemId)
 		    				->whereBetween('created_at', [$startDate, $endDate])
 		    				->get();    		
     	} else {
     		$prices = [];
     	}
 
-    	return view('monitor.index', compact('items', 'search', 'prices', 'startDate', 'endDate'));    	
+    	return view('monitor.index', compact('items', 'search', 'prices', 'startDate', 'endDate', 'itemId'));    	
     }
 }
