@@ -19,4 +19,10 @@ class PriceController extends Controller
 		Price::create($data);
 		return back();
 	}
+
+	public function destroy(Price $price)
+	{
+		$price->delete();
+		return back();
+	}
 }

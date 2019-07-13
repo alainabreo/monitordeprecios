@@ -63,6 +63,9 @@
                                         <a class="dropdown-item" href="{{ url('/items') }}">
                                             Items
                                         </a>
+                                        <a class="dropdown-item" href="{{ url('/monitor') }}">
+                                            Monitoreo
+                                        </a>
                                     @endif
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
